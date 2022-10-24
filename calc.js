@@ -13,3 +13,6 @@ function HandleInput(button){
     
 }
 
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+  }
