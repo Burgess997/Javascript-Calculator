@@ -12,6 +12,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 5px;
 }
 
 .display-container{
@@ -58,7 +59,21 @@ body {
     height: 64px;
 }
 
-.number-container button, .operator-container button {
+.number-container button, .operator-container button, .clear-container button {
     border-style: none;
     border-radius: 5px;
+}
+
+.clear-container button {
+    height: 200px;
+    width: 60px;
+
+}
+.clear-container {
+    display: flex;
+    margin: 10px;
+    height: 400px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
 }

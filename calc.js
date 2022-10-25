@@ -28,6 +28,10 @@ function clear() {
 }
 
 function HandleInput(button) {
+    if (button == "clear"){
+        clear
+    }
+
   if (button == "=" && currentOp != null) {
     currentNum = operate(prevNum, currentNum, currentOp);
     currentOp = (prevNum, currentNum) => {
