@@ -32,12 +32,15 @@ function HandleInput(button) {
         clear
     }
 
-  if (button == "eq" && currentOp != null) {
+  if (button == "eq") {
     currentNum = operate(prevNum, currentNum, currentOp);
     currentOp = (prevNum, currentNum) => {
       return currentNum;
     };
     numberDisplay.innerHTML = currentNum;
+    if (currentNum === null){
+        numberDisplay.innerHTML = "0"
+    }
     prevNum = null;
     afterOp = true
     return;
