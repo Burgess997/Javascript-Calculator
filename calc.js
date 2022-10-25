@@ -2,6 +2,8 @@ let numberDisplay = document.querySelector("#number-display");
 let numberButtons = document.querySelectorAll("button");
 let prevNum = null;
 let currentNum = null;
+let afterOp = false;
+
 let currentOp = (prevNum, currentNum) => {
   return currentNum;
 };
@@ -16,22 +18,42 @@ function InitButtons() {
   });
 }
 
+function clear() {
+  currentNum = 0;
+  prevNum = 0;
+  numberDisplay.innerHTML = "0"
+  currentOp = (prevNum, currentNum) => {
+    return currentNum;
+  };
+}
+
 function HandleInput(button) {
   if (button == "=" && currentOp != null) {
     currentNum = operate(prevNum, currentNum, currentOp);
+    currentOp = (prevNum, currentNum) => {
+      return currentNum;
+    };
     numberDisplay.innerHTML = currentNum;
     prevNum = null;
+    afterOp = true
     return;
   }
 
   if (numberDisplay.innerHTML == 0) numberDisplay.innerHTML = "";
 
   if (isNumeric(button) || button == ".") {
+    if (afterOp){
+        clear()
+        numberDisplay.innerHTML = ""
+    }
     numberDisplay.innerHTML += button;
     currentNum = parseFloat(numberDisplay.innerHTML);
     return;
   }
 
+  if (prevNum != null) {
+    currentNum = operate(prevNum, currentNum, currentOp);
+  }
 
   switch (button) {
     case "+":
@@ -56,6 +78,7 @@ function HandleInput(button) {
       break;
   }
 
+  afterOp = false
   prevNum = currentNum;
   currentNum = null;
   numberDisplay.innerHTML = "0";
