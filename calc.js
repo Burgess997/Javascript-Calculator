@@ -32,7 +32,7 @@ function HandleInput(button) {
         clear
     }
 
-  if (button == "=" && currentOp != null) {
+  if (button == "eq" && currentOp != null) {
     currentNum = operate(prevNum, currentNum, currentOp);
     currentOp = (prevNum, currentNum) => {
       return currentNum;
