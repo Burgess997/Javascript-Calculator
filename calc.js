@@ -52,6 +52,8 @@ function HandleInput(button) {
     if (afterOp){
         clear()
         numberDisplay.innerHTML = ""
+        afterOp = false
+
     }
     numberDisplay.innerHTML += button;
     currentNum = parseFloat(numberDisplay.innerHTML);
